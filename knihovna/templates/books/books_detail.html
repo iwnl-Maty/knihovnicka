@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail knihy: {{ book.titul }}{% endblock %}
+
+{% block content %}
+  <h2 class="display-4 text-center">{{ book.titul}}</h2>
+  <div class="row mb-2">
+    <div class="col-md-4">
+        {% if book.obalka %}
+            <img src="{{ book.obalka.url }}">
+        {% endif %}
+    <p><h3>Žánry:</h3></p>
+    {% for zanr in book.zanry.all %}
+      <p> {{ zanr }} </p>
+      {% endfor %}
+
+
+
+
+    </div>
+  <div class="col-md-8">
+      <p> <h3>Obsah:</h3>  {{ book.obsah }} </p>
+      {% for autor in book.autori.all %}
+      <p><h3>Autor:</h3> {{ autor.jmeno }} {{ autor.prijmeni }} </p>
+      {% endfor %}
+  <p><h3>Rok vydání: </h3> {{ book.rok_vydani }} </p>
+  </div>
+  </div>
+
+{% endblock %}
